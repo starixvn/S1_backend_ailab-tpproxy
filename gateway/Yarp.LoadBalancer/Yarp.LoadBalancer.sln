@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yarp.LoadBalancer", "Yarp.LoadBalancer\Yarp.LoadBalancer.csproj", "{B8A7C57F-848A-4077-927B-DE46C907FCA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AB95B180-364E-4DB7-AB0C-6D50D6468D5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8A7C57F-848A-4077-927B-DE46C907FCA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A7C57F-848A-4077-927B-DE46C907FCA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A7C57F-848A-4077-927B-DE46C907FCA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A7C57F-848A-4077-927B-DE46C907FCA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B8A7C57F-848A-4077-927B-DE46C907FCA4} = {AB95B180-364E-4DB7-AB0C-6D50D6468D5E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB06EEC6-26C5-4924-A06B-7B9240B6C292}
+	EndGlobalSection
+EndGlobal
