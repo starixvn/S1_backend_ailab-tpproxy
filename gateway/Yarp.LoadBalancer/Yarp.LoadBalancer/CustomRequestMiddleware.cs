@@ -31,7 +31,6 @@ namespace Yarp.LoadBalancer
             context.Request.Body = requestBodyStream;
 
 
-
             // todo 根據三方實作，找 TpUserName or Brand
             string userName = ParseUserName(requestBodyContent);
 
