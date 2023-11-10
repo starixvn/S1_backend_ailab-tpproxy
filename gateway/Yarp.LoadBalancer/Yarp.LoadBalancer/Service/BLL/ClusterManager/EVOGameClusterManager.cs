@@ -3,7 +3,7 @@ using Yarp.LoadBalancer.Service.BLL.ClusterManager.Interfaces;
 
 namespace Yarp.LoadBalancer.Service.BLL.ClusterManager
 {
-    public class EvoGameClusterManager : BaseClusterManager, IGameClusterManager
+    public class EVOGameClusterManager : BaseClusterManager, IGameClusterManager
     {
         public string TpName { get; set; } = "EVO";
 
