@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using MongoDB.Driver;
 
 namespace Yarp.LoadBalancer.Extensions
 {
@@ -16,5 +17,12 @@ namespace Yarp.LoadBalancer.Extensions
 
             return services;
         }
+
+        public static IServiceCollection AddMonGoDbClient(this IServiceCollection services)
+        {
+            services.AddSingleton<IMongoClient>(sp => new MongoClient("mongodb://admin:admin@localhost:27017"));
+            return services;
+        }
+
     }
 }

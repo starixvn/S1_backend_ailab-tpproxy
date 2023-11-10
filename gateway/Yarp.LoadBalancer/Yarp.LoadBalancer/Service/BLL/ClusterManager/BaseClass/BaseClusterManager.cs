@@ -1,15 +1,11 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Text;
+using System.Xml;
 
 namespace Yarp.LoadBalancer.Service.BLL.ClusterManager.BaseClass
 {
     public class BaseClusterManager
     {
-        public BaseClusterManager()
-        {
-            
-        }
-
         protected async Task<string> ReadRequestBody(HttpRequest request)
         {
             request.EnableBuffering();
@@ -34,6 +30,20 @@ namespace Yarp.LoadBalancer.Service.BLL.ClusterManager.BaseClass
             var jObject = JObject.Parse(json);
             var userTypeToken = jObject.SelectToken(jsonPath);
             return userTypeToken.Value<string>();
+        }
+
+        protected string GetTpUserNameFromXml(string xmlString, string xmlPath)
+        {
+            var xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(xmlString);
+            var node = xmlDoc.SelectSingleNode(xmlPath);
+            return node.InnerText;
+        }
+
+        protected string GetActionName(string requestPath)
+        {
+            var paths = requestPath.Split("/", StringSplitOptions.RemoveEmptyEntries);
+            return paths.Length > 1 ? paths[1] : string.Empty;
         }
 
         protected string SelectCluster(string tpUserName)

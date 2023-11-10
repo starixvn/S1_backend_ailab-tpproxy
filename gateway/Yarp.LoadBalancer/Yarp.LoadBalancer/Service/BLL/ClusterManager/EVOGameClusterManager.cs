@@ -10,8 +10,8 @@ namespace Yarp.LoadBalancer.Service.BLL.ClusterManager
         public async Task<string> SelectorCluster(HttpRequest request)
         {
             var requestBodyContent = await base.ReadRequestBody(request);
-            var tpUserNamePerFix = base.GetTpUserNameFromJson(requestBodyContent, "$.userId");
-            return base.SelectCluster(tpUserNamePerFix);
+            var tpUserName = base.GetTpUserNameFromJson(requestBodyContent, "$.userId");
+            return base.SelectCluster(tpUserName);
         }
     }
 }
