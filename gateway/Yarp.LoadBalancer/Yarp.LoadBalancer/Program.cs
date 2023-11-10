@@ -1,4 +1,4 @@
-using Yarp.LoadBalancer;
+using Yarp.LoadBalancer.Extensions.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 

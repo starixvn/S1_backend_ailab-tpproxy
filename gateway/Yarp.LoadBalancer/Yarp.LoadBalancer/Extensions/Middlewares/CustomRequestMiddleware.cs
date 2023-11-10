@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Yarp.LoadBalancer
+namespace Yarp.LoadBalancer.Extensions.Middlewares
 {
     public class CustomRoutingMiddleware
     {
