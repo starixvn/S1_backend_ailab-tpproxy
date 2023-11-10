@@ -1,9 +1,11 @@
-﻿namespace Yarp.LoadBalancer.Service.BLL.ClusterManager.Interfaces
+﻿using Yarp.LoadBalancer.Service.Enums;
+
+namespace Yarp.LoadBalancer.Service.BLL.ClusterManager.Interfaces
 {
     public interface IGameClusterManager
     {
         public string TpName { get; set; }
 
-        public Task<string> SelectorCluster(HttpRequest request);
+        public Task<ClusterName> SelectorCluster(HttpRequest request);
     }
 }

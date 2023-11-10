@@ -24,12 +24,12 @@ namespace Yarp.LoadBalancer.Extensions.Middlewares
                 var clusterId = await gameClusterManager.SelectorCluster(context.Request);
 
                 // 設置集群Id 與 路由 Id
-                context.Items["ReverseProxy:SelectedCluster"] = clusterId;
+                context.Items["ReverseProxy:SelectedCluster"] = clusterId.ToString();
                 context.Items["ReverseProxy:SelectedRoute"] = RouteId;
             }
             catch (Exception ex)
             {
-                //to error log
+                // Todo error log
                 Console.WriteLine(ex);
             }
 

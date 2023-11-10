@@ -7,9 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMultipleImplementingInterface(typeof(IGameClusterManager), typeof(IGameClusterManager).Assembly);
+
+// Customized DI
+builder.Services.AddMultipleImplementingInterface<IGameClusterManager>();
 builder.Services.AddMonGoDbClient();
+builder.Services.AddMonGoDbSetting();
 builder.Services.AddSingleton<ITpAuthTokenService, TpAuthTokenService>();
+builder.Services.AddClusterSettingConfig();
 
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));

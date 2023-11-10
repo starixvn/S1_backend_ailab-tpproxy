@@ -12,11 +12,10 @@ namespace Yarp.LoadBalancer.Service.DAL
     {
         private readonly IMongoCollection<TpAuthToken> _collection;
 
-        public TpAuthTokenService(IMongoClient mongoClient)
+        public TpAuthTokenService(IMongoClient client, MongoDbSetting dbSetting)
         {
-            // Todo 抽到SiteConfig
-            var database = mongoClient.GetDatabase("TpAuthDB");
-            _collection = database.GetCollection<TpAuthToken>("TpAuthToken");
+            var database = client.GetDatabase(dbSetting.DbName);
+            _collection = database.GetCollection<TpAuthToken>(dbSetting.CollectionName);
         }
 
         public TpAuthToken GetTpAuthToken(string token)

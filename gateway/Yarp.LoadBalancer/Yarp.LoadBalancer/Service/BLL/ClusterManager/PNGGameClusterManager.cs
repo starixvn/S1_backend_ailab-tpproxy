@@ -1,20 +1,22 @@
 ﻿using Yarp.LoadBalancer.Service.BLL.ClusterManager.BaseClass;
 using Yarp.LoadBalancer.Service.BLL.ClusterManager.Interfaces;
 using Yarp.LoadBalancer.Service.DAL;
+using Yarp.LoadBalancer.Service.Enums;
 
 namespace Yarp.LoadBalancer.Service.BLL.ClusterManager
 {
     public class PNGGameClusterManager : BaseClusterManager, IGameClusterManager
     {
         private readonly ITpAuthTokenService _tpAuthTokenService;
-        public PNGGameClusterManager(ITpAuthTokenService tpAuthTokenService)
+        public PNGGameClusterManager(ITpAuthTokenService tpAuthTokenService,
+            Dictionary<string, string> siteNameOfCluster) : base(siteNameOfCluster)
         {
             _tpAuthTokenService = tpAuthTokenService;
         }
 
         public string TpName { get; set; } = "PNG";
 
-        public async Task<string> SelectorCluster(HttpRequest request)
+        public async Task<ClusterName> SelectorCluster(HttpRequest request)
         {
             var requestBodyContent = await base.ReadRequestBody(request);
             var actionName = GetActionName(request.Path);

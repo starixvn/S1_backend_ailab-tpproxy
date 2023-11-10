@@ -1,11 +1,19 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Text;
 using System.Xml;
+using Yarp.LoadBalancer.Service.Enums;
 
 namespace Yarp.LoadBalancer.Service.BLL.ClusterManager.BaseClass
 {
     public class BaseClusterManager
     {
+        private readonly Dictionary<string, string> _siteNameOfCluster;
+
+        public BaseClusterManager(Dictionary<string, string> siteNameOfCluster)
+        {
+            _siteNameOfCluster = siteNameOfCluster;
+        }
+
         protected async Task<string> ReadRequestBody(HttpRequest request)
         {
             request.EnableBuffering();
@@ -46,21 +54,16 @@ namespace Yarp.LoadBalancer.Service.BLL.ClusterManager.BaseClass
             return paths.Length > 1 ? paths[1] : string.Empty;
         }
 
-        protected string SelectCluster(string tpUserName)
+        protected ClusterName SelectCluster(string tpUserName)
         {
-            //todo 抽到 SiteConfig
-            var defaultCluster = "nova";
-            var siteNameOfCluster = new Dictionary<string, string>()
-            {
-                {"nova88","nova" },
-                {"bwing", "nova"},
-                {"goal123","nova"},
-                {"leobet","glaxy"},
-            };
+            const ClusterName defaultCluster = ClusterName.nova;
 
-            foreach (var kvp in siteNameOfCluster.Where(kvp => tpUserName.IndexOf(kvp.Key, StringComparison.OrdinalIgnoreCase) != -1))
+            foreach (var kvp in _siteNameOfCluster.Where(kvp => tpUserName.IndexOf(kvp.Key, StringComparison.OrdinalIgnoreCase) != -1))
             {
-                return kvp.Value;
+                if (Enum.TryParse<ClusterName>(kvp.Value, out var cluster))
+                {
+                    return cluster;
+                }
             }
 
             return defaultCluster;
