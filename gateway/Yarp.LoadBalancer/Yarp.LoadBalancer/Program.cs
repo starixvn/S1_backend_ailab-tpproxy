@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 
 // Customized DI
 builder.Services.AddMultipleImplementingInterface<IGameClusterManager>();
-builder.Services.AddMonGoDbClient();
+builder.Services.AddMonGoDbClient(builder.Environment);
 builder.Services.AddMonGoDbSetting();
 builder.Services.AddSingleton<ITpAuthTokenService, TpAuthTokenService>();
 builder.Services.AddClusterSettingConfig();
